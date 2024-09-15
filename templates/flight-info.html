@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Information</title>
+    <!-- Correctly linking the CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <button id="refreshButton">Refresh Flight Data</button>
+    <table>
+        <thead>
+            <thead>
+                <tr>
+                    <th>Arrival Flight</th>
+                    <th>Departure Flight</th>
+                    <th>Rego</th>
+                    <th>Bay</th>
+                    <th>Arrival Status</th>
+                    <th>Departure Status</th>
+                    <th>Destination</th>
+                    <th>Completed</th> 
+                </tr>
+            </thead>            
+        </thead>
+        <tbody id="flightTableBody"></tbody>
+    </table>
+    <p id="errorMessage"></p>
+
+    <!-- Correctly linking the JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

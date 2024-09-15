@@ -1,0 +1,54 @@
+/* General Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 30px;  /* Increase font size */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 6px;  /* Reduce padding to minimize space */
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+td {
+    text-align: center; /* Align text centrally for a neat look */
+}
+
+@media screen and (max-width: 768px) {
+    /* For mobile, maintain compact structure and add horizontal scrolling */
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        display: block;
+        width: 100%;
+        white-space: nowrap;
+        overflow-x: scroll;
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 30px;  /* Slightly smaller font for mobile */
+    }
+
+    #refreshButton {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+}
+
+
+    /* Optional styling for the checkbox column */
+    td input[type="checkbox"] {
+        transform: scale(1.5); /* Make the checkbox bigger */
+        margin: 0 auto; /* Center the checkbox */
+    }
