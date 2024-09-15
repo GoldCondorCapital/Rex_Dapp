@@ -2,9 +2,9 @@ from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 from flight_matcher import match_flights_by_rego, get_flight_details
 
-
-app = Flask(__name__, static_folder='static', template_folder='templates')
-CORS(app)  # Enable CORS for all routes
+# Update template_folder and static_folder to point to the frontend folder
+app = Flask(__name__, static_folder='frontend/static', template_folder='frontend/templates')
+CORS(app)
 
 # Serve the index page
 @app.route('/')
