@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 from flight_matcher import match_flights_by_rego, get_flight_details
@@ -28,4 +29,6 @@ def flight_info():
     return jsonify(matched_flights)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
+
