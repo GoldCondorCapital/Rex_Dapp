@@ -3,7 +3,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    font-size: 30px;  /* Increase font size */
+    font-size: 24px;  /* Adjust font size for larger screens */
 }
 
 th, td {
@@ -35,20 +35,20 @@ td {
     }
 
     th, td {
-        padding: 8px;
-        font-size: 30px;  /* Slightly smaller font for mobile */
+        padding: 6px;
+        font-size: 18px;  /* Reduce font size for mobile */
     }
 
     #refreshButton {
         width: 100%;
-        padding: 12px;
+        padding: 10px;
+        font-size: 18px;  /* Adjust button size for mobile */
         margin-bottom: 15px;
     }
 }
 
-
-    /* Optional styling for the checkbox column */
-    td input[type="checkbox"] {
-        transform: scale(1.5); /* Make the checkbox bigger */
-        margin: 0 auto; /* Center the checkbox */
-    }
+/* Optional styling for the checkbox column */
+td input[type="checkbox"] {
+    transform: scale(1.2); /* Adjust checkbox size for mobile */
+    margin: 0 auto; /* Center the checkbox */
+}
