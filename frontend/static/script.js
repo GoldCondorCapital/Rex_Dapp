@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         flightTableBody.innerHTML = ''; // Clear the current table content
 
         // Fetch flight data from the Flask backend
-        fetch('http://127.0.0.1:5000/api/flight-info', { mode: 'cors' })
+        fetch('https://rex-dapp-2.onrender.com/api/flight-info')  // Updated URL
             .then(response => response.json())
             .then(data => {
                 if (data.length > 0) {
