@@ -5,7 +5,7 @@ const FlightList = () => {
   const [flights, setFlights] = useState([]);
 
   useEffect(() => {
-    fetch('http://your-backend-url/flight-info')
+    fetch('http://your-backend-url/flight-info')  // Replace with your actual backend URL
       .then((response) => response.json())
       .then((data) => setFlights(data))
       .catch((error) => console.error('Error fetching flight data:', error));
@@ -15,11 +15,14 @@ const FlightList = () => {
     <ScrollView style={styles.container}>
       {flights.map((flight, index) => (
         <View key={index} style={styles.flightItem}>
-          <Text>Flight Number: {flight.flight_number}</Text>
-          <Text>Arrival Time: {flight.arrival_time}</Text>
-          <Text>Departure Time: {flight.departure_time}</Text>
-          <Text>Bay: {flight.bay}</Text>
-          <Text>Status: {flight.status}</Text>
+          <Text>Flight Number: {flight.departure_flight_number || 'N/A'}</Text>
+          <Text>Arrival Time: {flight.arrival_time || 'N/A'}</Text>
+          <Text>Scheduled Departure Time: {flight.scheduled_departure || 'N/A'}</Text>
+          <Text>Estimated Departure Time: {flight.estimated_departure || 'N/A'}</Text>
+          <Text>Bay: {flight.bay || 'N/A'}</Text>
+          <Text>Arrival Status: {flight.status || 'N/A'}</Text>
+          <Text>Departure Status: {flight.departure_status || 'N/A'}</Text>
+          <Text>Destination: {flight.destination || 'N/A'}</Text>
         </View>
       ))}
     </ScrollView>

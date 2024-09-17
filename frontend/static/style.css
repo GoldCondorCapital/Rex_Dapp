@@ -1,54 +1,107 @@
-/* General Table Styling */
+/* Add a hover effect to the refresh button */
+#refreshButton {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #ff3c00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#refreshButton:hover {
+    background-color: #090fbd;
+}
+
+#refreshButton:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Center the loading message */
+p {
+    font-size: 18px;
+    color: #007bff;
+    text-align: center;
+}
+
+/* Improve the table appearance */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
-    font-size: 24px;  /* Adjust font size for larger screens */
+    font-size: 14px;
 }
 
 th, td {
     border: 1px solid #ddd;
-    padding: 6px;  /* Reduce padding to minimize space */
+    padding: 8px;
     text-align: left;
 }
 
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
 th {
-    background-color: #4CAF50;
+    background-color: #007bff;
     color: white;
+    text-align: center;
 }
 
-td {
-    text-align: center; /* Align text centrally for a neat look */
+/* Add padding and style to the body */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
 }
 
-@media screen and (max-width: 768px) {
-    /* For mobile, maintain compact structure and add horizontal scrolling */
-    .table-container {
-        overflow-x: auto;
+/* Mobile Optimization */
+
+/* Apply styles when the screen width is less than 600px */
+@media only screen and (max-width: 600px) {
+
+    /* Make the button and text smaller on mobile */
+    #refreshButton {
+        font-size: 14px;
+        padding: 8px 16px;
+        width: 100%; /* Ensure the button takes the full width */
+        margin-bottom: 10px;
     }
 
+    /* Adjust the table layout for mobile */
     table {
-        display: block;
-        width: 100%;
-        white-space: nowrap;
-        overflow-x: scroll;
+        font-size: 12px;
     }
 
     th, td {
         padding: 6px;
-        font-size: 18px;  /* Reduce font size for mobile */
     }
 
-    #refreshButton {
-        width: 100%;
+    /* Make the table scrollable horizontally */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Stack table headers vertically for better readability */
+    th {
+        font-size: 12px;
+    }
+
+    /* Adjust body padding */
+    body {
         padding: 10px;
-        font-size: 18px;  /* Adjust button size for mobile */
-        margin-bottom: 15px;
     }
-}
 
-/* Optional styling for the checkbox column */
-td input[type="checkbox"] {
-    transform: scale(1.2); /* Adjust checkbox size for mobile */
-    margin: 0 auto; /* Center the checkbox */
+    /* Adjust paragraph font-size */
+    p {
+        font-size: 16px;
+    }
+
+    /* Hide some less relevant columns on mobile if needed (optional) */
+    td:nth-child(4), td:nth-child(5), td:nth-child(6), td:nth-child(7) {
+        display: none;
+    }
 }

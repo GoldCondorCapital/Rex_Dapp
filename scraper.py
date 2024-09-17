@@ -15,16 +15,18 @@ def get_flight_details(url):
         soup = BeautifulSoup(response.content, 'html.parser')
         flights = []
 
+        # Iterate through each row in the flight table
         for flight_row in soup.find_all('tr'):
             try:
+                logging.info(f"Processing flight row: {flight_row}")  # Log the full HTML of the row
+
                 # Extract the flight number
                 flight_number_tag = flight_row.find('td', class_='flightNumber')
                 if flight_number_tag:
                     flight_number = flight_number_tag.text.strip()
                     logging.info(f"Found flight: {flight_number}")
 
-                    # Check if it's a Rex flight (ZL prefix)
-                    if flight_number.startswith("ZL"):
+                    if flight_number.startswith("ZL"):  # Only process Rex flights
                         try:
                             rego = flight_row.find('td', class_='aircraftRegistration').text.strip()
                         except AttributeError:
@@ -41,17 +43,17 @@ def get_flight_details(url):
                             status = "Unknown"
                         
                         try:
-                            destination = flight_row.find('td', class_='destination').text.strip()  # Ensure destination is extracted
+                            destination = flight_row.find('td', class_='destination').text.strip()
                         except AttributeError:
                             destination = "Unknown"
 
-                        logging.info(f"Flight details - Flight Number: {flight_number}, Rego: {rego}, Bay: {bay}, Status: {status}, Destination: {destination}")
+                        # Append flight details to the list
                         flights.append({
                             'flight_number': flight_number,
                             'rego': rego,
                             'bay': bay,
                             'status': status,
-                            'destination': destination  # Ensure destination is appended
+                            'destination': destination
                         })
 
             except Exception as e:

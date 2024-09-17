@@ -23,12 +23,12 @@ def match_flights_by_rego(departure_flights, arrival_flights):
                     'bay': arrival['bay'],
                     'status': arrival['status'],
                     'departure_status': departure['status'],
-                    'destination': departure['destination'] 
+                    'destination': departure['destination'],
+                    'arrival_time': arrival.get('arrival_time', 'N/A'),  # Adding arrival time
+                    'departure_time': departure.get('departure_time', 'N/A')  # Adding departure time
                 })
                 logging.info(f"Matched Rex ZL Flight: Arrival {arrival['flight_number']} with Departure {departure['flight_number']}")
     return matched_flights
-
-
 
 # Example usage
 if __name__ == "__main__":
@@ -47,10 +47,13 @@ if __name__ == "__main__":
     # Match flights based on rego
     matched_flights = match_flights_by_rego(departure_flights, arrival_flights)
 
-    # Print matched flights
+    # Print matched flights with times
     for flight in matched_flights:
         print(f"Arrival Flight Number: {flight['arrival_flight_number']}, "
               f"Departure Flight Number: {flight['departure_flight_number']}, "
               f"Rego: {flight['rego']}, Bay: {flight['bay']}, "
-              f"Arrival Status: {flight['status']}, Departure Status: {flight['departure_status']}")
+              f"Arrival Status: {flight['status']}, Departure Status: {flight['departure_status']}, "
+              f"Arrival Time: {flight['arrival_time']}, Departure Time: {flight['departure_time']}")
+        
+# Enable logging
 logging.basicConfig(level=logging.INFO)
