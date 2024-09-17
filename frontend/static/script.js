@@ -3,13 +3,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const refreshButton = document.getElementById('refreshButton');
     const errorMessage = document.getElementById('errorMessage');
 
+    // Add event listener to refresh button
     refreshButton.addEventListener('click', () => {
-        flightTableBody.innerHTML = ''; // Clear the table before fetching new data
+        flightTableBody.innerHTML = '';  // Clear current table content
+        errorMessage.textContent = '';   // Clear any previous errors
+
+        // Update button to show loading state
+        refreshButton.textContent = 'Loading...';
+        refreshButton.disabled = true;   // Disable the button during loading
 
         // Fetch flight data from the backend API
-        fetch('/api/flight-info')  // Replace with your correct API URL
+        fetch('/api/flight-info')  // Replace with the correct API URL
             .then(response => response.json())
             .then(data => {
+                refreshButton.textContent = 'Refresh Flight Data';  // Reset button text
+                refreshButton.disabled = false;  // Re-enable the button
+
                 if (data.length > 0) {
                     data.forEach(flight => {
                         const row = document.createElement('tr');
@@ -27,14 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         `;
                         flightTableBody.appendChild(row);
                     });
-                    errorMessage.textContent = '';  // Clear any previous error messages
                 } else {
                     errorMessage.textContent = 'No flights available.';
                 }
             })
             .catch(error => {
+                refreshButton.textContent = 'Refresh Flight Data';  // Reset button text
+                refreshButton.disabled = false;  // Re-enable the button
+                errorMessage.textContent = 'Error loading flight data. Please try again.';
                 console.error('Error fetching flight data:', error);
-                errorMessage.textContent = 'Error loading flight data.';
             });
     });
 });

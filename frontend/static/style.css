@@ -1,17 +1,18 @@
-/* Add a hover effect to the refresh button */
+/* Style the refresh button with a hover effect */
 #refreshButton {
-    font-size: 16px;
-    padding: 10px 20px;
-    background-color: #ff3c00;
-    color: white;
+    font-size: 18px;
+    padding: 12px 25px;
+    background-color: #e90808; /* Changed the button color */
+    color: rgb(251, 252, 250);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Added transition for smoothness */
 }
 
 #refreshButton:hover {
-    background-color: #090fbd;
+    background-color: #1a73e8; /* Updated hover background color */
+    transform: scale(1.05); /* Add a slight scale on hover to make the button more interactive */
 }
 
 #refreshButton:disabled {
@@ -31,11 +32,12 @@ table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
+    margin-top: 20px; /* Added spacing between table and button */
 }
 
 th, td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 10px;
     text-align: left;
 }
 
@@ -47,61 +49,67 @@ th {
     background-color: #007bff;
     color: white;
     text-align: center;
+    padding: 12px; /* Added more padding to the header for better spacing */
 }
 
 /* Add padding and style to the body */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     padding: 20px;
     background-color: #f9f9f9;
 }
 
+/* Style the orientation message */
+#orientationMessage {
+    display: none;
+    text-align: center;
+    background-color: #ff3c00;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for emphasis */
+}
+
+/* Show the orientation message only in portrait mode on mobile */
+@media screen and (max-width: 600px) and (orientation: portrait) {
+    #orientationMessage {
+        display: block;
+    }
+}
+
 /* Mobile Optimization */
-
-/* Apply styles when the screen width is less than 600px */
 @media only screen and (max-width: 600px) {
-
-    /* Make the button and text smaller on mobile */
     #refreshButton {
         font-size: 14px;
-        padding: 8px 16px;
-        width: 100%; /* Ensure the button takes the full width */
-        margin-bottom: 10px;
+        padding: 10px 20px; /* Reduced padding for mobile */
+        width: 100%; /* Full width button for mobile */
+        margin-bottom: 15px;
     }
 
-    /* Adjust the table layout for mobile */
     table {
         font-size: 12px;
-    }
-
-    th, td {
-        padding: 6px;
-    }
-
-    /* Make the table scrollable horizontally */
-    table {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
     }
 
-    /* Stack table headers vertically for better readability */
+    th, td {
+        padding: 8px;
+    }
+
     th {
         font-size: 12px;
     }
 
-    /* Adjust body padding */
     body {
         padding: 10px;
     }
 
-    /* Adjust paragraph font-size */
     p {
         font-size: 16px;
-    }
-
-    /* Hide some less relevant columns on mobile if needed (optional) */
-    td:nth-child(4), td:nth-child(5), td:nth-child(6), td:nth-child(7) {
-        display: none;
     }
 }
